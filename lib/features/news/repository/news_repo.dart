@@ -10,7 +10,7 @@ class NewsApi {
 
   NewsApi(this.apiClient);
 
-  Future<List<News>> fetchNews() async {
+/*   Future<List<News>> fetchNews() async {
     final response = await apiClient.get(
         '/top-headlines?country=us&pageSize=10'); // Usa el cliente personalizado
 
@@ -34,6 +34,36 @@ class NewsApi {
     } else {
       throw Exception('Error al cargar noticias: ${response.statusCode}');
     }
+  } */
+
+  Future<List<News>> fetchNews({String? category, String? search}) async {
+    final String url = category != null
+        ? '/top-headlines?country=us&category=$category&pageSize=20'
+        : search != null
+            ? '/everything?q=$search&pageSize=10'
+            : '/top-headlines?country=us&pageSize=20&sortBy=publishedAt';
+
+    final response = await apiClient.get(url);
+
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> newsMap = json.decode(response.body);
+      final List<dynamic> articlesJson = newsMap['articles'];
+
+      return articlesJson.map((article) {
+        if (article is Map<String, dynamic>) {
+          return News.fromJson(article);
+        } else {
+          throw Exception('El artículo no es un mapa');
+        }
+      }).toList();
+    } else {
+      throw Exception('Error al cargar noticias: ${response.statusCode}');
+    }
+  }
+
+  Future<List<News>> fetchNewsByCategory(
+      {String? category, String? search}) async {
+    return fetchNews(category: category, search: search);
   }
 
 // Método para obtener noticias recomendadas basadas en una categoría
@@ -66,4 +96,25 @@ class NewsApi {
           'Error al cargar noticias recomendadas: ${response.statusCode}');
     }
   }
+
+  // Método para buscar noticias por categoría
+/*   Future<List<News>> fetchNewsByCategory(String category) async {
+    final response = await apiClient.get('/everything?q=$category&pageSize=10');
+
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> newsMap = json.decode(response.body);
+      final List<dynamic> articlesJson = newsMap['articles'];
+
+      return articlesJson.map((article) {
+        if (article is Map<String, dynamic>) {
+          return News.fromJson(article);
+        } else {
+          throw Exception('El artículo no es un mapa');
+        }
+      }).toList();
+    } else {
+      throw Exception(
+          'Error al cargar noticias por categoría: ${response.statusCode}');
+    }
+  } */
 }

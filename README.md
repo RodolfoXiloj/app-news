@@ -16,28 +16,28 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 
-Detalle del Requerimiento: 
+## Detalle del Requerimiento: 
 Objetivo: Desarrollar una aplicación intuitiva y atractiva que permita a los usuarios explorar noticias de diversas fuentes.
 
-Descripción de la aplicación: 
+## Descripción de la aplicación: 
 
 Aplicación de Noticias. Tu empresa está desarrollando una nueva aplicación web de noticias. La aplicación debe proporcionar a los usuarios una experiencia de lectura intuitiva y atractiva. 
 La aplicación como tal es un repositorio que trae noticias de diferentes fuentes por consumos.
 
-Funcionalidades Clave:
+## Funcionalidades Clave:
 --Registro e Inicio de Sesión: Permitir a los usuarios registrarse y autenticarse mediante correo electrónico y contraseña.
-Perfil de Usuario: Permitir a los usuarios personalizar su perfil seleccionando categorías de interés y fuentes preferidas.
+--Perfil de Usuario: Permitir a los usuarios personalizar su perfil seleccionando categorías de interés y fuentes preferidas.
 --Detalles de la Noticia: Mostrar la noticia completa, incluyendo título, imagen, descripción, fecha de publicación y fuente.
-Búsqueda: Permitir a los usuarios buscar por categorías 
+--Búsqueda: Permitir a los usuarios buscar por categorías 
 --Noticias Recomendadas: dentro de la página interna de la noticia, debe tener una sección que muestre noticias recomendadas, asociadas directamente a la categoría que esta pertenece. 
 
-Detalle de la funcionalidad: 
+## Detalle de la funcionalidad: 
 --Pantalla Principal: Mostrar un listado de noticias (título, imagen, descripción) obtenidas de un endpoint del backend.
 --Detalles de Noticia: Mostrar la información completa de una noticia al hacer clic en ella (título, imagen, cuerpo, fecha) y un botón para regresar a la lista.
 --Noticias Recomendadas: En la página de detalles, mostrar al menos 3 noticias relacionadas.
 --Navegación: Implementar una barra de navegación simple con enlaces a "Inicio" y "Categorías".
 --Autenticación: Implementar autenticación basada en JWT para proteger los endpoints del backend.
- Pantalla Principal: 
+--Pantalla Principal: 
 • Al acceder a la aplicación, se debe mostrar una página principal con un componente que contraiga una lista de al menos 5 noticias. 
 --• Cada noticia debe mostrar el título, una imagen y una breve descripción.
 --• La información de las noticias debe provenir del backend a través de una llamada a la API. 
@@ -52,15 +52,15 @@ Detalle de la funcionalidad:
 --Barra de Navegación: Diseña una barra de navegación que incluya enlaces a “Inicio” y “Categorias”. Asegúrate de que la barra de navegación sea visible en todas las páginas. 
 --Al iniciar sesión, el usuario debe recibir un token JWT que se utilizará para autorizar las solicitudes a la API del Backend Asegúrate de manejar correctamente la expiración del token y de almacenar el token de manera segura en el lado del cliente 
 
-APIS  de Noticias: 
+--APIS  de Noticias: 
 • Implementa un endpoint REST que devuelva al menos 5 noticias con la estructura necesaria para la pantalla principal del frontend.
  • Cada noticia debe tener un ID, título, imagen y descripción. 
 • Asegúrate de que este endpoint esté protegido y requiera un token JWT válido para acceder. 
 
-Detalles de noticia: 
+--Detalles de noticia: 
 • Crea un endpoint que reciba el ID de una noticia y devuelva todos los detalles necesarios para la página de detalles del frontend.
  • Protege este endpoint para que solo sea accesible con un token JWT válido. 
-Noticias recomendadas 
+--Noticias recomendadas 
 • Implementa un endpoint que devuelva al menos 3 noticias recomendadas para una noticia dada.
  • Este endpoint también debe estar protegido por autenticación JWT.
  Categorías: implementa un endpoint para obtener la lista de categorías. 
@@ -78,6 +78,8 @@ Personalización: Utilizar algoritmos de recomendación para personalizar el fee
 Diagrama de Componentes:
 [Incluir un diagrama que muestre la interacción entre la aplicación Flutter, la API REST y la base de datos]
 
+## Detalles de la arquitectura: 
+
 Frontend: Flutter
 Lenguaje: Dart.
 Framework: Flutter.
@@ -93,3 +95,7 @@ google_sign_in: Para implementar el inicio de sesión con Google.
 flutter_secure_storage: Para almacenar el Google ID Token de forma segura.
 http: Para consumir las APIs de noticias.
 flutter_dotenv: Para manejar las claves de la API del proveedor externo de noticias.
+
+credencial del api
+fogilot726@abaot.com
+Apirest12**

@@ -5,6 +5,7 @@ import 'package:myapp/core/models/source.dart';
 import 'package:myapp/core/providers/category_provider.dart';
 import 'package:myapp/core/providers/source_provider.dart';
 import 'package:myapp/core/providers/auth_provider.dart';
+import 'package:myapp/core/widgets/buil_app_bar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends ConsumerStatefulWidget {
@@ -31,17 +32,13 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     final authNotifier = ref.read(authProvider.notifier);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Perfil de Usuario'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.logout),
-            onPressed: () async {
-              await authNotifier.signOut();
-              Navigator.of(context).pushReplacementNamed('/login');
-            },
-          ),
-        ],
+      appBar: buildAppBar(
+        'Perfil de Usuario',
+        showLogOut: true,
+        onLogOut: () async {
+          await authNotifier.signOut();
+          Navigator.of(context).pushReplacementNamed('/login');
+        },
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),

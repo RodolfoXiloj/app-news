@@ -1,65 +1,26 @@
 {
   "project_info": {
-    "project_number": "256536220034",
-    "project_id": "app-news-499cf",
-    "storage_bucket": "app-news-499cf.appspot.com"
+    "project_number": "256100326602",
+    "project_id": "app-news-894dd",
+    "storage_bucket": "app-news-894dd.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:256536220034:android:592e5ef93bf6e38288ff9b",
-        "android_client_info": {
-          "package_name": "com.example.app"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "256536220034-9cakcjifihd9he296pr6ustshmlf4chc.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDvqklKi16j4QRX1YGIprGUzs-UBqmir4Y"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "256536220034-9cakcjifihd9he296pr6ustshmlf4chc.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:256536220034:android:52ce2f9ff26e64ee88ff9b",
+        "mobilesdk_app_id": "1:256100326602:android:8ff609d1e7494fd9866833",
         "android_client_info": {
           "package_name": "com.example.myapp"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "256536220034-9cakcjifihd9he296pr6ustshmlf4chc.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDvqklKi16j4QRX1YGIprGUzs-UBqmir4Y"
+          "current_key": "AIzaSyCaLrGv16LQaB9uK6vAcPmOes7yVIqrxAw"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "256536220034-9cakcjifihd9he296pr6ustshmlf4chc.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

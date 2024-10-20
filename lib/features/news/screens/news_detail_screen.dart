@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:myapp/core/models/news.dart';
 import 'package:myapp/core/providers/news_providers.dart';
+import 'package:myapp/core/widgets/buil_app_bar.dart';
 import 'package:myapp/features/news/widgets/recommended_news_list.dart';
 
 class NewsDetailScreen extends ConsumerWidget {
@@ -15,9 +16,7 @@ Widget build(BuildContext context, WidgetRef ref) {
       ref.watch(recommendedNewsProvider(news.source?.id ?? ''));
 
   return Scaffold(
-    appBar: AppBar(
-      title: Text('News Details'),
-    ),
+    appBar: buildAppBar('News Details'),
     body: ListView(
       padding: const EdgeInsets.all(16.0),
       children: [
