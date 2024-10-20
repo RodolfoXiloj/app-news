@@ -44,6 +44,7 @@ class AuthNotifier extends StateNotifier<AsyncValue<User?>> {
         throw Exception(
             'Error en el registro. Inténtalo de nuevo.'); // Lanza un error si el usuario es nulo
       }
+      await user.sendEmailVerification();
       state = AsyncValue.data(user);
       _showCustomDialog(
         context,
@@ -77,6 +78,32 @@ class AuthNotifier extends StateNotifier<AsyncValue<User?>> {
       if (user == null) {
         throw Exception(
             'Error en el inicio de sesion. Inténtalo de nuevo.'); // Lanza un error si el usuario es nulo
+      }
+      // Verificar si el correo ha sido validado
+      if (!user.emailVerified) {
+        state = AsyncValue.error(
+            'Por favor, verifica tu correo electrónico.', StackTrace.current);
+        _showCustomDialog(
+          context,
+          DialogType.warning,
+          'Verificación requerida',
+          'Por favor, revisa tu correo electrónico para verificar tu cuenta.',
+          actions: [
+            TextButton(
+              onPressed: () async {
+                await user
+                    .sendEmailVerification(); // Reenviar el correo de verificación
+                Navigator.pop(context); // Cerrar el diálogo
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Correo de verificación reenviado.')),
+                );
+              },
+              child: Text('Reenviar correo de verificación'),
+            ),
+          ],
+        );
+
+        return;
       }
       state = AsyncValue.data(user);
       /* _showCustomDialog(
@@ -137,7 +164,8 @@ final authProvider =
 });
 
 void _showCustomDialog(
-    BuildContext context, DialogType type, String title, String content) {
+    BuildContext context, DialogType type, String title, String content,
+    {List<Widget>? actions}) {
   showDialog(
     context: context,
     builder: (context) {
@@ -145,6 +173,7 @@ void _showCustomDialog(
         dialogType: type,
         title: title,
         content: content,
+        actions: actions,
       );
     },
   );
