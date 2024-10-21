@@ -51,13 +51,23 @@ class AuthNotifier extends StateNotifier<AsyncValue<User?>> {
         DialogType.success,
         'Registro Exitoso',
         'Tu cuenta ha sido creada con éxito.',
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context); // Cerrar el diálogo
+              Navigator.of(context).pushReplacementNamed(
+                  '/login'); // Navegar a la pantalla de inicio de sesión
+            },
+            child: const Text('Continuar'),
+          ),
+        ],
       );
       // Espera a que el usuario cierre el diálogo antes de navegar
       /* await Future.delayed(Duration(seconds: 2)); // Espera 2 segundos
 
       Navigator.of(context).pushReplacementNamed(
           '/login'); */
-      Navigator.pop(context);
+      //Navigator.pop(context);
     } catch (e) {
       state = AsyncValue.error(e, StackTrace.current);
       _showCustomDialog(

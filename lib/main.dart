@@ -4,6 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:myapp/core/providers/auth_provider.dart';
 import 'package:myapp/features/auth/screens/login_screen.dart';
+import 'package:myapp/firebase_options.dart';
 import 'package:myapp/main_screen.dart';
 import 'core/constants/app_constants.dart';
 import 'core/routes/app_routes.dart';
@@ -11,7 +12,9 @@ import 'core/routes/app_routes.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(ProviderScope(child: MyApp()));
 }
 
